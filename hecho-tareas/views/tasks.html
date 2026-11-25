@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis tareas — Hecho</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="/tasks">Hecho</a>
+      <div class="topbar-actions">
+        <span class="user-name" id="userName"></span>
+        <button class="btn secondary" id="logoutBtn" type="button">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h1>Mis tareas</h1>
+      <button class="btn" id="newTaskBtn" type="button">Nueva tarea</button>
+    </div>
+
+    <section class="stats" aria-label="Resumen de tareas">
+      <div class="stat"><strong id="statTotal">0</strong><span>Total</span></div>
+      <div class="stat"><strong id="statPending">0</strong><span>Pendientes</span></div>
+      <div class="stat"><strong id="statCompleted">0</strong><span>Completadas</span></div>
+      <div class="stat alert"><strong id="statOverdue">0</strong><span>Atrasadas</span></div>
+    </section>
+
+    <form class="toolbar" role="search" id="filters">
+      <div class="search">
+        <label class="muted" for="q">Buscar por título</label>
+        <input id="q" type="search" placeholder="Escribe para buscar…" maxlength="100" autocomplete="off">
+      </div>
+      <div>
+        <label for="fStatus">Estado</label>
+        <select id="fStatus">
+          <option value="all">Todas</option>
+          <option value="pending">Pendientes</option>
+          <option value="completed">Completadas</option>
+        </select>
+      </div>
+      <div>
+        <label for="fPriority">Prioridad</label>
+        <select id="fPriority">
+          <option value="">Todas</option>
+          <option value="HIGH">Alta</option>
+          <option value="MEDIUM">Media</option>
+          <option value="LOW">Baja</option>
+        </select>
+      </div>
+      <div class="span-2">
+        <label for="fSort">Ordenar por</label>
+        <select id="fSort">
+          <option value="created">Más recientes</option>
+          <option value="due">Fecha de vencimiento</option>
+          <option value="priority">Prioridad</option>
+        </select>
+      </div>
+    </form>
+
+    <p class="list-error" id="listError" role="alert" hidden></p>
+    <ul class="task-list" id="taskList"></ul>
+    <p class="empty" id="emptyState" hidden>No hay tareas con estos filtros. Crea una con “Nueva tarea”.</p>
+  </main>
+
+  <dialog id="taskDialog" aria-labelledby="taskDialogTitle">
+    <h2 id="taskDialogTitle">Nueva tarea</h2>
+    <form id="taskForm" novalidate>
+      <div class="field">
+        <label for="title">Título</label>
+        <input id="title" name="title" type="text" maxlength="120" required>
+      </div>
+      <div class="field">
+        <label for="description">Descripción (opcional)</label>
+        <textarea id="description" name="description" rows="3" maxlength="1000"></textarea>
+      </div>
+      <div class="dialog-grid">
+        <div class="field">
+          <label for="priority">Prioridad</label>
+          <select id="priority" name="priority">
+            <option value="HIGH">Alta</option>
+            <option value="MEDIUM" selected>Media</option>
+            <option value="LOW">Baja</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="dueDate">Vence</label>
+          <input id="dueDate" name="dueDate" type="date">
+        </div>
+      </div>
+      <p id="taskFormError" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button class="btn secondary" type="button" id="cancelTask">Cancelar</button>
+        <button class="btn" type="submit" id="saveTask">Guardar tarea</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="deleteDialog" aria-labelledby="deleteDialogTitle">
+    <h2 id="deleteDialogTitle">Eliminar tarea</h2>
+    <p id="deleteMessage"></p>
+    <div class="dialog-actions">
+      <button class="btn secondary" type="button" id="cancelDelete">Cancelar</button>
+      <button class="btn danger" type="button" id="confirmDelete">Eliminar tarea</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="/js/tasks.js"></script>
+</body>
+</html>
