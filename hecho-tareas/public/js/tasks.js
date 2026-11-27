@@ -85,7 +85,34 @@ function showListError(message) {
   $("listError").textContent = message;
   $("listError").hidden = false;
 }
+function renderMood(stats) {
+  let emoji;
+  let text;
 
+  if (stats.total === 0) {
+    emoji = "😐";
+    text = "Aún no tienes tareas. ¡Crea la primera!";
+  } else {
+    const rate = stats.completed / stats.total;
+    const percent = Math.round(rate * 100);
+
+    if (rate >= 0.7 && stats.overdue === 0) {
+      emoji = "😄";
+      text = `¡Excelente! Completaste el ${percent}% de tus tareas.`;
+    } else if (rate < 0.4 || stats.overdue >= 2) {
+      emoji = "😢";
+      text = `Vas en ${percent}% y tienes ${stats.overdue} atrasada(s). ¡Tú puedes!`;
+    } else {
+      emoji = "😐";
+      text = `Vas por buen camino: ${percent}% completado.`;
+    }
+  }
+
+  $("mood").replaceChildren(
+    h("span", { class: "mood-emoji", "aria-hidden": "true", text: emoji }),
+    h("span", { text }),
+  );
+}
 async function load() {
   try {
     const params = new URLSearchParams({ status: filters.status, sort: filters.sort });
@@ -98,6 +125,7 @@ async function load() {
     ]);
     $("listError").hidden = true;
     render(tasks, stats);
+       renderMood(stats);
   } catch (error) {
     showListError(error.message);
   }

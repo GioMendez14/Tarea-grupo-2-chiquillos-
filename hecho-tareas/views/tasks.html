@@ -9,7 +9,7 @@
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="logo" href="/tasks">Hecho</a>
+     <a class="logo" href="/tasks"><img src="/img/logo.png" alt="Hecho"></a>
       <div class="topbar-actions">
         <span class="user-name" id="userName"></span>
         <button class="btn secondary" id="logoutBtn" type="button">Cerrar sesión</button>
@@ -62,7 +62,8 @@
       </div>
     </form>
 
-    <p class="list-error" id="listError" role="alert" hidden></p>
+    <p class="mood" id="mood" role="status" aria-live="polite"></p>
+     <p class="list-error" id="listError" role="alert" hidden></p>
     <ul class="task-list" id="taskList"></ul>
     <p class="empty" id="emptyState" hidden>No hay tareas con estos filtros. Crea una con “Nueva tarea”.</p>
   </main>

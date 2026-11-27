@@ -157,3 +157,13 @@ dialog h2 { font-size: 18px; margin-bottom: 16px; }
 .dialog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
 .toolbar .span-2 { grid-column: span 2; }
+.mood {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; margin-bottom: 20px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; font-size: 16px;
+}
+.mood-emoji { font-size: 36px; line-height: 1; }
+.logo img { height: 64px; width: auto; display: block; mix-blend-mode: multiply; }
+.auth .logo img { height: 64x; }
+.hero-logo { height: 220px; width: auto; display: block; margin-bottom: 8px; mix-blend-mode: multiply; }

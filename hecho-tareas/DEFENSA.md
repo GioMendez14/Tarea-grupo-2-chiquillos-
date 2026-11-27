@@ -1,4 +1,4 @@
-# Guía para la defensa oral
+
 
 Respuestas base: cámbialas por tus palabras y practica explicarlas en voz alta.
 
