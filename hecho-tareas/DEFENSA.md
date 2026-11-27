@@ -1,4 +1,4 @@
-
+Profesor si lee esto, esto es la defensa de nosotros de cosas que hicimos mientras haciamos la web app y empezamos a pensar preguntas que usted nos haria y hicimos esto 👩‍🦲
 
 Respuestas base: cámbialas por tus palabras y practica explicarlas en voz alta.
 
